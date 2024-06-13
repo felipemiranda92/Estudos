@@ -7,19 +7,34 @@
 
 import Foundation
 
+protocol HistoryViewModelProtocol: AnyObject {
+    func successRequest()
+}
+
 class HistoryViewModel {
     
-    var service: HistoryService = HistoryService()
+    private var service: HistoryService = HistoryService()
+    private var history: History?
+    weak var delegate: HistoryViewModelProtocol?
     
     func fetchHistory() {
         service.getHistoryMock { result in
             switch result {
             case .success(let success):
-                print(success)
+                history = success
+                delegate?.successRequest()
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
         }
+    }
+    
+    func numberOfRows() -> Int {
+        return history?.historyAccountList.count ?? 0
+    }
+    
+    func getHistoryAccountList(indexPath: IndexPath) -> HistoryAccountList {
+        return history?.historyAccountList[indexPath.row] ?? HistoryAccountList(name: "", price: 0, iconImage: "")
     }
     
 }
