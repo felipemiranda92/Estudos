@@ -1,0 +1,41 @@
+{
+    "totalValue": 3566.10,
+    "historyAccountList": [
+        {
+            "name": "Bar da Mooca",
+            "price": 250.10,
+            "iconImage": "url-image-mooca"
+        },
+        {
+            "name": "Bar Nuporanga",
+            "price": 150.40,
+            "iconImage": "url-image-nuporanga"
+        },
+        {
+            "name": "Bar da Mooca",
+            "price": 350.60,
+            "iconImage": "url-image-mooca"
+        },
+        {
+            "name": "Bar Nuporanga",
+            "price": 150.70,
+            "iconImage": "url-image-nuporanga"
+        },
+        {
+            "name": "Bar da Mooca",
+            "price": 250.10,
+            "iconImage": "url-image-mooca"
+        },
+        {
+            "name": "Bar Nuporanga",
+            "price": 250.70,
+            "iconImage": "url-image-nuporanga"
+        },
+        {
+            "name": "Buteco do Jão",
+            "price": 100.80,
+            "iconImage": "url-image-Buteco"
+        }
+    ]
+}
+

@@ -7,19 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		645043A12C1B26B100EF4096 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645043A02C1B26B100EF4096 /* HistoryViewModel.swift */; };
+		645043A42C1B270F00EF4096 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645043A32C1B270F00EF4096 /* HistoryService.swift */; };
+		645043A72C1B275C00EF4096 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645043A62C1B275C00EF4096 /* History.swift */; };
+		645043A92C1B27F300EF4096 /* History.json in Resources */ = {isa = PBXBuildFile; fileRef = 645043A82C1B27F300EF4096 /* History.json */; };
 		64F9D6B42C18E52200C4DC39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D6B32C18E52200C4DC39 /* AppDelegate.swift */; };
 		64F9D6B62C18E52200C4DC39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D6B52C18E52200C4DC39 /* SceneDelegate.swift */; };
-		64F9D6B82C18E52200C4DC39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D6B72C18E52200C4DC39 /* ViewController.swift */; };
+		64F9D6B82C18E52200C4DC39 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D6B72C18E52200C4DC39 /* HistoryViewController.swift */; };
 		64F9D6BB2C18E52200C4DC39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64F9D6B92C18E52200C4DC39 /* Main.storyboard */; };
 		64F9D6BD2C18E52300C4DC39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F9D6BC2C18E52300C4DC39 /* Assets.xcassets */; };
 		64F9D6C02C18E52300C4DC39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64F9D6BE2C18E52300C4DC39 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		645043A02C1B26B100EF4096 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		645043A32C1B270F00EF4096 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		645043A62C1B275C00EF4096 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		645043A82C1B27F300EF4096 /* History.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = History.json; sourceTree = "<group>"; };
 		64F9D6B02C18E52200C4DC39 /* praticandoRequisicaoAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = praticandoRequisicaoAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F9D6B32C18E52200C4DC39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64F9D6B52C18E52200C4DC39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		64F9D6B72C18E52200C4DC39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64F9D6B72C18E52200C4DC39 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		64F9D6BA2C18E52200C4DC39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64F9D6BC2C18E52300C4DC39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64F9D6BF2C18E52300C4DC39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +45,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6450439D2C1B25D300EF4096 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				645043A22C1B26F100EF4096 /* Service */,
+				6450439F2C1B269500EF4096 /* ViewModel */,
+				64F9D6B72C18E52200C4DC39 /* HistoryViewController.swift */,
+				64F9D6B92C18E52200C4DC39 /* Main.storyboard */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		6450439E2C1B267500EF4096 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				645043A62C1B275C00EF4096 /* History.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6450439F2C1B269500EF4096 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				645043A02C1B26B100EF4096 /* HistoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		645043A22C1B26F100EF4096 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				645043A32C1B270F00EF4096 /* HistoryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		645043A52C1B273800EF4096 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				645043A82C1B27F300EF4096 /* History.json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		64F9D6A72C18E52200C4DC39 = {
 			isa = PBXGroup;
 			children = (
@@ -56,10 +107,11 @@
 		64F9D6B22C18E52200C4DC39 /* praticandoRequisicaoAPI */ = {
 			isa = PBXGroup;
 			children = (
+				6450439E2C1B267500EF4096 /* Model */,
+				645043A52C1B273800EF4096 /* Mock */,
+				6450439D2C1B25D300EF4096 /* History */,
 				64F9D6B32C18E52200C4DC39 /* AppDelegate.swift */,
 				64F9D6B52C18E52200C4DC39 /* SceneDelegate.swift */,
-				64F9D6B72C18E52200C4DC39 /* ViewController.swift */,
-				64F9D6B92C18E52200C4DC39 /* Main.storyboard */,
 				64F9D6BC2C18E52300C4DC39 /* Assets.xcassets */,
 				64F9D6BE2C18E52300C4DC39 /* LaunchScreen.storyboard */,
 				64F9D6C12C18E52300C4DC39 /* Info.plist */,
@@ -127,6 +179,7 @@
 			files = (
 				64F9D6C02C18E52300C4DC39 /* LaunchScreen.storyboard in Resources */,
 				64F9D6BD2C18E52300C4DC39 /* Assets.xcassets in Resources */,
+				645043A92C1B27F300EF4096 /* History.json in Resources */,
 				64F9D6BB2C18E52200C4DC39 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +191,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64F9D6B82C18E52200C4DC39 /* ViewController.swift in Sources */,
+				645043A72C1B275C00EF4096 /* History.swift in Sources */,
+				64F9D6B82C18E52200C4DC39 /* HistoryViewController.swift in Sources */,
 				64F9D6B42C18E52200C4DC39 /* AppDelegate.swift in Sources */,
+				645043A42C1B270F00EF4096 /* HistoryService.swift in Sources */,
 				64F9D6B62C18E52200C4DC39 /* SceneDelegate.swift in Sources */,
+				645043A12C1B26B100EF4096 /* HistoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HistoryViewController: UIViewController {
+    
+    var viewModel: HistoryViewModel = HistoryViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        viewModel.fetchHistory()
     }
 
 
