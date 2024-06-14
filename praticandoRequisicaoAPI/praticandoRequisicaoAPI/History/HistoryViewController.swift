@@ -8,17 +8,19 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
-
+    
     
     
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: HistoryViewModel = HistoryViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        viewModel.fetchHistory()
+//        viewModel.fetchHistoryMock()
+//        viewModel.fetchHistoryURLSession()
+        viewModel.fetchHistoryAlamofire()
     }
     
     func configTableView() {
@@ -27,8 +29,8 @@ class HistoryViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.register(HistoryTableViewCell.nib(), forCellReuseIdentifier: HistoryTableViewCell.identifier)
     }
-
-
+    
+    
 }
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
@@ -45,9 +47,13 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HistoryViewController: HistoryViewModelProtocol {
-    func successRequest() {
-        configTableView()
+    func errorRequest() {
+        //Exibimos algum tipo de alert
     }
     
+    func successRequest() {
+        configTableView()
+        
+    }
     
 }
