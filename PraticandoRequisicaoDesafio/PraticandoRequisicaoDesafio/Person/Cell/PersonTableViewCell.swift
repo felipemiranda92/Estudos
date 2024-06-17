@@ -8,16 +8,30 @@
 import UIKit
 
 class PersonTableViewCell: UITableViewCell {
+    
+
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var jobLabel: UILabel!
+    
+    static let identifier: String = String(describing: PersonTableViewCell.self)
+    
+    static func nib() -> UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func setupCell(data: Pessoa) {
+        nameLabel.text = "Nome: \(data.nome)"
+        lastNameLabel.text = "Sobrenome: \(data.sobrenome)"
+        ageLabel.text = "Idade: \(data.idade)"
+        jobLabel.text = "Profissão: \(data.profissao)"
     }
+
     
 }

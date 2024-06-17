@@ -1,0 +1,34 @@
+{
+    "pessoas": [
+      {
+        "nome": "Carlos",
+        "sobrenome": "da Silva",
+        "idade": 28,
+        "profissao": "Engenheiro de Software"
+      },
+      {
+        "nome": "Fabio",
+        "sobrenome": "Pereira",
+        "idade": 34,
+        "profissao": "Arquiteta"
+      },
+      {
+        "nome": "Roberto",
+        "sobrenome": "Nunes",
+        "idade": 45,
+        "profissao": "Médico"
+      },
+      {
+        "nome": "Fernanda",
+        "sobrenome": "Costa",
+        "idade": 30,
+        "profissao": "Advogada"
+      },
+      {
+        "nome": "Lucas",
+        "sobrenome": "Martins",
+        "idade": 22,
+        "profissao": "Estudante"
+      }
+    ]
+  }
