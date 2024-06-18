@@ -9,6 +9,32 @@ import Foundation
 
 class LoginService {
     
+    func getWeatherURLSession(cityName: String, completion: @escaping (Result<Weather, Error>) -> Void) {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=B02099dee5559d260c3803a77cf18332") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let dataResult = data else { return }
+            
+            guard let response = response as? HTTPURLResponse else { return }
+            
+            if response.statusCode == 200 {
+                do {
+                    let weather: Weather = try JSONDecoder().decode(Weather.self, from: dataResult)
+                    completion(.success(weather))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else {
+                completion(.failure(error ?? NSError(domain: "Erro: ", code: response.statusCode)))
+            }
+        }
+        task.resume()
+    }
+    
     func getEmbassyAbroadURLSession(completion: @escaping (Result<EmbassyAbroad, Error>) -> Void) {
         guard let url = URL(string: "https://travel-info-api.p.rapidapi.com/find-embassy?source=turkey&destination=usa") else { return }
         

@@ -17,6 +17,7 @@
 		6463A8512C20799B00EC0DA2 /* CountryActivies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463A8502C20799B00EC0DA2 /* CountryActivies.swift */; };
 		6463A8542C2079DB00EC0DA2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463A8532C2079DB00EC0DA2 /* LoginService.swift */; };
 		6463A8562C20A7ED00EC0DA2 /* EmbassyAbroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463A8552C20A7ED00EC0DA2 /* EmbassyAbroad.swift */; };
+		6463A8582C20C31300EC0DA2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463A8572C20C31300EC0DA2 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6463A8502C20799B00EC0DA2 /* CountryActivies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryActivies.swift; sourceTree = "<group>"; };
 		6463A8532C2079DB00EC0DA2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		6463A8552C20A7ED00EC0DA2 /* EmbassyAbroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbassyAbroad.swift; sourceTree = "<group>"; };
+		6463A8572C20C31300EC0DA2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				6463A8502C20799B00EC0DA2 /* CountryActivies.swift */,
 				6463A8552C20A7ED00EC0DA2 /* EmbassyAbroad.swift */,
+				6463A8572C20C31300EC0DA2 /* Weather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6463A8582C20C31300EC0DA2 /* Weather.swift in Sources */,
 				6463A8562C20A7ED00EC0DA2 /* EmbassyAbroad.swift in Sources */,
 				6463A84E2C20794100EC0DA2 /* LoginViewModel.swift in Sources */,
 				6463A8542C2079DB00EC0DA2 /* LoginService.swift in Sources */,

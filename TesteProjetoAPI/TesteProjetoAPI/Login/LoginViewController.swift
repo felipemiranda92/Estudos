@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        viewModel.fetchCountryActivies(country: "turkey")
-        viewModel.fetchEmbassyAbroad()
+//        viewModel.fetchEmbassyAbroad()
+        viewModel.fetchWeather(cityName: "paris")
         
     }
 

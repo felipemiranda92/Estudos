@@ -13,6 +13,20 @@ class LoginViewModel {
     private var countryActivies: CountryActivies?
     private var activities: [Activity]?
     private var listEmbassyAbroadDetail: [EmbassyAbroadDetail] = []
+    private var weather: Weather?
+    
+    func fetchWeather(cityName: String) {
+        service.getWeatherURLSession(cityName: cityName) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+                self.weather = success
+//                self.listEmbassyAbroadDetail = success.data ?? []
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
     
     func fetchEmbassyAbroad() {
         service.getEmbassyAbroadURLSession { result in
