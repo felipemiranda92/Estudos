@@ -16,20 +16,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TELA HOMEE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-27-DyP">
-                                <rect key="frame" x="145" y="415.66666666666669" width="103.33333333333331" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9cJ-gz-c35">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tFi-27-DyP" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="N3n-nV-2VP"/>
-                            <constraint firstItem="tFi-27-DyP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="NFf-DA-yl4"/>
+                            <constraint firstItem="9cJ-gz-c35" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="A2b-y0-5mb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9cJ-gz-c35" secondAttribute="trailing" id="eCE-cA-QYX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9cJ-gz-c35" secondAttribute="bottom" id="kVG-aQ-CvF"/>
+                            <constraint firstItem="9cJ-gz-c35" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="tFh-qS-hVc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="9cJ-gz-c35" id="3oA-vJ-HzD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
