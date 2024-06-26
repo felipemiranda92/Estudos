@@ -9,9 +9,9 @@ import UIKit
 
 class PokemonTableViewCell: UITableViewCell {
     
-    static let identifier: String = String(describing: PokemonTableViewCell.self)
-    
     @IBOutlet weak var pokemonNameLabel: UILabel!
+    
+    static let identifier: String = String(describing: PokemonTableViewCell.self)
     
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)

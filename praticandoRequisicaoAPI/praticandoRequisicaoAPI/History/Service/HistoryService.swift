@@ -11,7 +11,7 @@ import Alamofire
 class HistoryService {
     
     func getHistoryAlamofire(completion: @escaping (Result<History, Error>) -> Void) {
-        let urlString = "https://run.mocky.io/v3/1ce2ff7c-d097-41bc-842f-a9b0813e3a54"
+        let urlString = "https://run.mocky.io/v3/4fc3c22c-2094-400d-8223-8fe95691aca2"
         AF.request(urlString, method: .get).responseDecodable(of: History.self) { response in
             switch response.result {
             case .success(let history):
@@ -25,7 +25,7 @@ class HistoryService {
     // Usamos o @escaping pois é assíncrono. Ou seja, só função só será encerrada quando tivermos concluído o completion
     
     func getHistoryURLSession(completion: @escaping (Result<History, Error>) -> Void) {
-        guard let url = URL(string: "https://run.mocky.io/v3/1ce2ff7c-d097-41bc-842f-a9b0813e3a54") else { return }
+        guard let url = URL(string: "https://run.mocky.io/v3/4fc3c22c-2094-400d-8223-8fe95691aca2") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

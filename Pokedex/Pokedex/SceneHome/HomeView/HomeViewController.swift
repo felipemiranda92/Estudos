@@ -15,10 +15,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cofingTableView()
+        viewModel.delegate = self
+        viewModel.fetchPokemonURLSession()
     }
     
-    func cofingTableView(){
+    func configTableView(){
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(PokemonTableViewCell.nib(), forCellReuseIdentifier: PokemonTableViewCell.identifier)
@@ -26,14 +27,31 @@ class HomeViewController: UIViewController {
 
 }
 
+
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: PokemonTableViewCell.identifier, for: indexPath) as? PokemonTableViewCell
+        cell?.setupCell(data: viewModel.getPokemon(indexPath: indexPath))
+        return cell ?? UITableViewCell()
     }
     
+    
+}
+
+extension HomeViewController: HomeViewModelProtocol {
+    func successRequest() {
+        configTableView()
+        tableView.reloadData()
+    }
+    
+    func errorRequest() {
+        let alert = UIAlertController(title: "Error", message: "Failed to fetch Pokémon data. Please try again later.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
