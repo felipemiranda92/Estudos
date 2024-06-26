@@ -34,5 +34,32 @@ class PokemonService {
         }
         task.resume()
     }
+    
+    func getPokemonDetailsURLSession(url: String, completion: @escaping (Result<PokemonDetails, Error>) -> Void) {
+        guard let url = URL(string: url) else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let dataResult = data else { return }
+            
+            guard let response = response as? HTTPURLResponse else { return }
+            
+            if response.statusCode == 200 {
+                do {
+                    let pokemonSprite: PokemonDetails = try JSONDecoder().decode(PokemonDetails.self, from: dataResult)
+                    completion(.success(pokemonSprite))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else {
+                completion(.failure(error ?? NSError(domain: "Erro: ", code: response.statusCode)))
+            }
+        }
+        task.resume()
+    }
+
 
 }

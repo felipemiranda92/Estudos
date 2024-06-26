@@ -16,6 +16,7 @@ class HomeViewModel {
     
     private var service: PokemonService = PokemonService()
     private var pokemon: Pokemon?
+    private var pokemonDetails: PokemonDetails?
     weak var delegate: HomeViewModelProtocol?
     
     
@@ -26,12 +27,32 @@ class HomeViewModel {
                 case .success(let success):
                     self.pokemon = success
                     self.delegate?.successRequest()
+//                    if let firstPokemonUrl = success.results?.first?.url {
+//                        self.fetchPokemonDetailsURLSession(url: firstPokemonUrl)
+//                        print(firstPokemonUrl)
+//                    }
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                    self.delegate?.errorRequest()
+                }
+            }
+        }
+    }
+    
+    func fetchPokemonDetailsURLSession(url: String) {
+        service.getPokemonDetailsURLSession(url: url) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    self.pokemonDetails = success
+//                    self.delegate?.successRequest()
                 case .failure(let failure):
                     print(failure.localizedDescription)
                 }
             }
         }
     }
+    
     
     func numberOfRows() -> Int {
         return pokemon?.results?.count ?? 0
@@ -42,5 +63,9 @@ class HomeViewModel {
             return PokemonResult(name: "", url: "")
         }
         return results[indexPath.row]
+    }
+    
+    func getPokemonImageUrl() -> String? {
+        return pokemonDetails?.sprites.frontDefault
     }
 }
