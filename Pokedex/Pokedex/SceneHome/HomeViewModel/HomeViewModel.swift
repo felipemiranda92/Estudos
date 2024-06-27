@@ -1,10 +1,3 @@
-//
-//  HomeViewModel.swift
-//  Pokedex
-//
-//  Created by Felipe Miranda Santos on 25/06/24.
-//
-
 import Foundation
 
 protocol HomeViewModelProtocol: AnyObject {
@@ -16,9 +9,8 @@ class HomeViewModel {
     
     private var service: PokemonService = PokemonService()
     private var pokemon: Pokemon?
-    private var pokemonDetails: PokemonDetails?
+    private var pokemonDetails: [Int: PokemonDetails] = [:]
     weak var delegate: HomeViewModelProtocol?
-    
     
     func fetchPokemonURLSession() {
         service.getPokemonURLSession { result in
@@ -26,11 +18,8 @@ class HomeViewModel {
                 switch result {
                 case .success(let success):
                     self.pokemon = success
+                    self.fetchPokemonDetailsForAll()
                     self.delegate?.successRequest()
-//                    if let firstPokemonUrl = success.results?.first?.url {
-//                        self.fetchPokemonDetailsURLSession(url: firstPokemonUrl)
-//                        print(firstPokemonUrl)
-//                    }
                 case .failure(let failure):
                     print(failure.localizedDescription)
                     self.delegate?.errorRequest()
@@ -39,13 +28,22 @@ class HomeViewModel {
         }
     }
     
-    func fetchPokemonDetailsURLSession(url: String) {
+    func fetchPokemonDetailsForAll() {
+        guard let results = pokemon?.results else { return }
+        for (index, result) in results.enumerated() {
+            if let url = result.url {
+                fetchPokemonDetailsURLSession(url: url, index: index)
+            }
+        }
+    }
+    
+    func fetchPokemonDetailsURLSession(url: String, index: Int) {
         service.getPokemonDetailsURLSession(url: url) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let success):
-                    self.pokemonDetails = success
-//                    self.delegate?.successRequest()
+                    self.pokemonDetails[index] = success
+                    self.delegate?.successRequest()
                 case .failure(let failure):
                     print(failure.localizedDescription)
                 }
@@ -53,19 +51,30 @@ class HomeViewModel {
         }
     }
     
-    
     func numberOfRows() -> Int {
         return pokemon?.results?.count ?? 0
     }
     
-    func getPokemon(indexPath: IndexPath) -> PokemonResult {
+    func getPokemon(indexPath: IndexPath) -> PokemonDisplayData {
         guard let results = pokemon?.results, indexPath.row < results.count else {
-            return PokemonResult(name: "", url: "")
+            return PokemonDisplayData(name: "", imageUrl: nil)
         }
-        return results[indexPath.row]
+        
+        var name = results[indexPath.row].name ?? ""
+        name = name.capitalizingFirstLetter()
+        let imageUrl = pokemonDetails[indexPath.row]?.sprites.frontDefault
+        
+        return PokemonDisplayData(name: name, imageUrl: imageUrl)
     }
-    
-    func getPokemonImageUrl() -> String? {
-        return pokemonDetails?.sprites.frontDefault
+}
+
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }
