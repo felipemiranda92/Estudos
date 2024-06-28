@@ -63,8 +63,9 @@ class HomeViewModel {
         var name = results[indexPath.row].name ?? ""
         name = name.capitalizingFirstLetter()
         let imageUrl = pokemonDetails[indexPath.row]?.sprites.frontDefault
+        let weight = pokemonDetails[indexPath.row]?.weight
         
-        return PokemonDisplayData(name: name, imageUrl: imageUrl)
+        return PokemonDisplayData(name: name, imageUrl: imageUrl, weight: weight)
     }
 }
 

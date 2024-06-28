@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: HomeViewModel = HomeViewModel()
@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
         tableView.register(PokemonTableViewCell.nib(), forCellReuseIdentifier: PokemonTableViewCell.identifier)
         tableView.separatorStyle = .none
     }
-
+    
 }
 
 
@@ -38,6 +38,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PokemonTableViewCell.identifier, for: indexPath) as? PokemonTableViewCell
         cell?.setupCell(data: viewModel.getPokemon(indexPath: indexPath))
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailsScreen = UIStoryboard(name: String(describing: PokemonDetailsViewController.self), bundle: nil).instantiateViewController(identifier: String(describing: PokemonDetailsViewController.self)) { coder -> PokemonDetailsViewController? in
+            return PokemonDetailsViewController(coder: coder, pokemonDetails: self.viewModel.getPokemon(indexPath: indexPath))
+        }
+        
+        self.navigationController?.pushViewController(detailsScreen, animated: true)
     }
     
     

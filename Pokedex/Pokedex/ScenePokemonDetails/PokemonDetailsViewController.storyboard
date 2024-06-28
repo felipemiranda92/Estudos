@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pokemon Details View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PokemonDetailsViewController" id="Y6W-OH-hqX" customClass="PokemonDetailsViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wq-eq-NWf">
+                                <rect key="frame" x="20" y="490" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncZ-Li-QNp">
+                                <rect key="frame" x="20" y="583" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LjM-7E-bIu">
+                                <rect key="frame" x="121" y="188" width="150" height="150"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ncZ-Li-QNp" secondAttribute="trailing" constant="20" id="AAM-Qn-xFR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ncZ-Li-QNp" secondAttribute="bottom" constant="214" id="AUq-Ib-4uf"/>
+                            <constraint firstItem="3wq-eq-NWf" firstAttribute="top" secondItem="LjM-7E-bIu" secondAttribute="bottom" constant="20" id="K76-hS-tIx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3wq-eq-NWf" secondAttribute="trailing" constant="20" id="PZo-aO-A9l"/>
+                            <constraint firstItem="ncZ-Li-QNp" firstAttribute="top" secondItem="3wq-eq-NWf" secondAttribute="bottom" constant="20" id="Rlj-6H-tus"/>
+                            <constraint firstItem="ncZ-Li-QNp" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YaC-9L-aHW"/>
+                            <constraint firstItem="LjM-7E-bIu" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ZIt-3w-aJ8"/>
+                            <constraint firstItem="ncZ-Li-QNp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="dng-VU-7tH"/>
+                            <constraint firstItem="LjM-7E-bIu" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="erd-jm-1HH"/>
+                            <constraint firstItem="3wq-eq-NWf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="grX-uG-Ac2"/>
+                            <constraint firstItem="3wq-eq-NWf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="ksd-wz-tHq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="namePokemonLabel" destination="3wq-eq-NWf" id="aZq-FM-hoJ"/>
+                        <outlet property="pokemonImageView" destination="LjM-7E-bIu" id="bzA-zC-sU0"/>
+                        <outlet property="weightPokemonLabel" destination="ncZ-Li-QNp" id="iYH-qF-8fG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

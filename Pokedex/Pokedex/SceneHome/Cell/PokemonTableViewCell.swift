@@ -26,8 +26,14 @@ class PokemonTableViewCell: UITableViewCell {
     }
     
     func configCell() {
+        pokemonNameLabel.textColor = .black
+        pokemonNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        pokemonNameLabel.adjustsFontSizeToFitWidth = true
+        pokemonNameLabel.minimumScaleFactor = 0.8
+        
         pokemonImageView.layer.cornerRadius = pokemonImageView.frame.size.width / 2
         pokemonImageView.clipsToBounds = true
+        
         self.accessoryType = .disclosureIndicator
         self.selectionStyle = .none
     }
