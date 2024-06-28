@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configElements()
         viewModel.delegate = self
         searchBar.delegate = self
         viewModel.fetchPokemonURLSession()
@@ -28,6 +29,30 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(PokemonTableViewCell.nib(), forCellReuseIdentifier: PokemonTableViewCell.identifier)
         tableView.separatorStyle = .none
+    }
+    
+    func configElements() {
+        
+        tableView.layer.cornerRadius = 10
+        tableView.clipsToBounds = true
+
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = .white
+            textField.layer.cornerRadius = 10
+            textField.clipsToBounds = true
+            if let backgroundView = textField.subviews.first {
+                backgroundView.layer.cornerRadius = 10
+                backgroundView.clipsToBounds = true
+            }
+        }
+        
+        searchBar.setImage(UIImage(named: "search_icon"), for: .search, state: .normal)
+        searchBar.searchBarStyle = .minimal
+        
+        logoLabel.text = "Pokédex"
+        logoLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 24)
+        logoLabel.textColor = UIColor(red: 0.12, green: 0.63, blue: 0.95, alpha: 1.00) 
+        logoLabel.textAlignment = .center
     }
     
 }
