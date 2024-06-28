@@ -10,6 +10,7 @@ class HomeViewModel {
     private var service: PokemonService = PokemonService()
     private var pokemon: Pokemon?
     private var pokemonDetails: [Int: PokemonDetails] = [:]
+    private var filteredPokemon: [PokemonResult] = []
     weak var delegate: HomeViewModelProtocol?
     
     func fetchPokemonURLSession() {
@@ -18,8 +19,13 @@ class HomeViewModel {
                 switch result {
                 case .success(let success):
                     self.pokemon = success
-                    self.fetchPokemonDetailsForAll()
-                    self.delegate?.successRequest()
+                    if let results = success.results {
+                        self.filteredPokemon = results
+                        self.fetchPokemonDetailsForAll()
+                        self.delegate?.successRequest()
+                    } else {
+                        self.delegate?.errorRequest()
+                    }
                 case .failure(let failure):
                     print(failure.localizedDescription)
                     self.delegate?.errorRequest()
@@ -50,22 +56,35 @@ class HomeViewModel {
             }
         }
     }
+
     
     func numberOfRows() -> Int {
-        return pokemon?.results?.count ?? 0
+        return filteredPokemon.count
     }
     
     func getPokemon(indexPath: IndexPath) -> PokemonDisplayData {
-        guard let results = pokemon?.results, indexPath.row < results.count else {
-            return PokemonDisplayData(name: "", imageUrl: nil)
+        guard indexPath.row < filteredPokemon.count else {
+            return PokemonDisplayData(name: "", imageUrl: nil, weight: nil, originalIndex: -1)
         }
-        
-        var name = results[indexPath.row].name ?? ""
+
+        let result = filteredPokemon[indexPath.row]
+        var name = result.name ?? ""
         name = name.capitalizingFirstLetter()
-        let imageUrl = pokemonDetails[indexPath.row]?.sprites.frontDefault
-        let weight = pokemonDetails[indexPath.row]?.weight
-        
-        return PokemonDisplayData(name: name, imageUrl: imageUrl, weight: weight)
+        let originalIndex = pokemon?.results?.firstIndex(where: { $0.name == result.name }) ?? -1
+        let imageUrl = originalIndex >= 0 ? pokemonDetails[originalIndex]?.sprites.frontDefault : nil
+        let weight = originalIndex >= 0 ? pokemonDetails[originalIndex]?.weight : nil
+
+        return PokemonDisplayData(name: name, imageUrl: imageUrl, weight: weight, originalIndex: originalIndex)
+    }
+    
+    func filterPokemon(searchText: String) {
+        if searchText.isEmpty {
+            filteredPokemon = pokemon?.results ?? []
+        } else {
+            filteredPokemon = pokemon?.results?.filter { pokemon in
+                pokemon.name?.lowercased().contains(searchText.lowercased()) ?? false
+            } ?? []
+        }
     }
 }
 

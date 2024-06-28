@@ -9,6 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    
+    @IBOutlet weak var logoLabel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: HomeViewModel = HomeViewModel()
@@ -16,6 +19,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        searchBar.delegate = self
         viewModel.fetchPokemonURLSession()
     }
     
@@ -64,4 +68,18 @@ extension HomeViewController: HomeViewModelProtocol {
         self.present(alert, animated: true, completion: nil)
     }
     
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filterPokemon(searchText: searchText)
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        viewModel.filterPokemon(searchText: searchBar.text ?? "")
+        tableView.reloadData()
+    }
 }

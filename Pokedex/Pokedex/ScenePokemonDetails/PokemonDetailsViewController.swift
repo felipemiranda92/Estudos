@@ -61,20 +61,16 @@ class PokemonDetailsViewController: UIViewController {
         namePokemonLabel.textColor = UIColor.systemBlue
         namePokemonLabel.textAlignment = .center
         
-        // Estilizando weightPokemonLabel
         weightPokemonLabel.font = UIFont.systemFont(ofSize: 18)
         weightPokemonLabel.textColor = UIColor.systemGray
         weightPokemonLabel.textAlignment = .center
         
-        // Estilizando pokemonImageView
         pokemonImageView.layer.cornerRadius = pokemonImageView.frame.size.width / 2
         pokemonImageView.clipsToBounds = true
         
-        // Adicionando uma borda arredondada azul
         pokemonImageView.layer.borderWidth = 0.5
         pokemonImageView.layer.borderColor = UIColor.systemBlue.cgColor
         
-        // Adicionando um fundo opaco arredondado
         let backgroundLayer = CALayer()
         backgroundLayer.frame = pokemonImageView.bounds
         backgroundLayer.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2).cgColor

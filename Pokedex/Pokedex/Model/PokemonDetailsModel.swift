@@ -22,8 +22,9 @@ struct PokemonSprites: Codable {
 
 
 struct PokemonDisplayData {
-    var name: String
-    var imageUrl: String?
-    var weight: Int?
+    let name: String
+    let imageUrl: String?
+    let weight: Int?
+    let originalIndex: Int
 }
 
