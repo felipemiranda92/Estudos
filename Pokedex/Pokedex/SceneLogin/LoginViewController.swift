@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
 
@@ -22,15 +23,40 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didTapEnterButton(_ sender: UIButton) {
-        
-        let homeScreen = UIStoryboard(name: String(describing: HomeViewController.self), bundle: nil).instantiateViewController(withIdentifier: String(describing: HomeViewController.self)) as? HomeViewController
-        navigationController?.pushViewController(homeScreen ?? UIViewController(), animated: true)
+        signInUser()
     }
     
     @IBAction func didTapRegisterButton(_ sender: UIButton) {
         
         let registerScreen = UIStoryboard(name: String(describing: RegisterViewController.self), bundle: nil).instantiateViewController(withIdentifier: String(describing: RegisterViewController.self)) as? RegisterViewController
+        registerScreen?.navigationItem.hidesBackButton = true
         navigationController?.pushViewController(registerScreen ?? UIViewController(), animated: true)
+    }
+    
+    func signInUser() {
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                self.showAlert(message: "Erro ao fazer login -> \(error.localizedDescription)")
+            } else {
+                self.navigateToHome()
+            }
+        }
+    }
+    
+    
+    func navigateToHome() {
+        let homeScreen = UIStoryboard(name: String(describing: HomeViewController.self), bundle: nil).instantiateViewController(withIdentifier: String(describing: HomeViewController.self)) as? HomeViewController
+        homeScreen?.navigationItem.hidesBackButton = true
+        navigationController?.pushViewController(homeScreen ?? UIViewController(), animated: true)
+    }
+    
+    private func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Alerta", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     
@@ -51,6 +77,7 @@ extension LoginViewController: UITextFieldDelegate {
         emailTextField.autocapitalizationType = .none
         emailTextField.keyboardType = .emailAddress
         emailTextField.returnKeyType = .next
+        emailTextField.addTarget(self, action: #selector(trimEmailTextField), for: .editingChanged)
         
         passwordTextField.delegate = self
         passwordTextField.placeholder = "Digite sua senha"
@@ -63,12 +90,13 @@ extension LoginViewController: UITextFieldDelegate {
         enterButton.backgroundColor = UIColor(red: 0.12, green: 0.63, blue: 0.95, alpha: 1.00)
         enterButton.layer.cornerRadius = 8
         
-        registerButton.setTitle("Cadastre aqui", for: .normal)
+        registerButton.setTitle("Faça seu cadastro", for: .normal)
         registerButton.setTitleColor(UIColor(red: 0.12, green: 0.63, blue: 0.95, alpha: 1.00), for: .normal)
         registerButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 12)
         registerButton.titleLabel?.adjustsFontSizeToFitWidth = true
         registerButton.titleLabel?.minimumScaleFactor = 0.5
         registerButton.titleLabel?.lineBreakMode = .byClipping
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -83,6 +111,12 @@ extension LoginViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    @objc func trimEmailTextField() {
+        if let text = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            emailTextField.text = text
+        }
     }
 }
 
