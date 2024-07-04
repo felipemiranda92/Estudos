@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController {
 
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
-                self.showAlert(message: "Deu ruim em -> \(error.localizedDescription)")
+                self.showAlert(message: "Erro -> \(error.localizedDescription)")
             } else {
                 self.navigationController?.popViewController(animated: true)
             }
